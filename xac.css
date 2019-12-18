@@ -1,0 +1,177 @@
+.body{
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:0;
+	}
+
+	/* ØVERSTE BAR */
+	.tab{
+		overflow:hidden;
+		background-image: repeating-radial-gradient(farthest-side at 10% 99%,purple ,orange 2%, blue 3%);
+		font-family:Comic Sans MS;
+		font-size:30px;
+		padding: 10px;
+	}
+	.tab a{
+		background-color:none;
+		text-decoration: none;
+		color:black;
+		margin:10px;
+	}
+	.tab button{
+		background-color:inherit;
+		border: none;
+		color: black;
+		font-family:inherit;
+		font-size:inherit;
+		padding: 20px;
+		text-align: left;
+		text-decoration: inline-block;
+		margin: 2px 2px;
+		cursor: pointer;
+	}
+	/* GCP */
+	.head{
+		justify-content: center;
+		display:flex;
+		background-image:url(boston_panorama.jpg);
+		background-repeat: round;
+		color:red;
+		height: 200px;
+		line-height: 200px;
+		margin-top: 0px;
+		margin-bottom:0px;
+		font-size: 80px;
+	}
+
+	.row{
+		background-color:green;
+		height: 100vh;
+		margin-top: 0px;
+		display:flex;
+		flex-wrap: wrap;
+	}
+
+	.sidebar{
+		text-align: center;
+		margin-left: auto;
+		position: relative;
+		flex:0 0 195px;
+		background-color:#144187;
+		padding:10px;
+	}
+
+
+	.sidebar a{
+		line-height: 40px;
+		display:block;
+		font-size: 15px;
+		color:black;
+		text-decoration: none;
+		text-align: center;
+		width:100%;
+		height:40px;
+		background-color: #2464c9;
+		border:none;
+	}
+	.sidebar a:hover{
+		background-color: #1654b5;
+	}
+
+	.mainbar{
+		flex-direction: column;
+		flex:auto;
+		background-color:#5999ff;
+		padding:10px;
+	}
+
+	.film{
+		text-align: center;
+		display:block;
+		background-color:#5999ff;
+	}
+
+	.mainbar1{
+		column-count: 3;
+		column-width: 3px;
+		column-rule-style: solid;
+		column-rule-width: 1px;
+		column-rule-color: #144187;
+	}
+
+	.mainbar1 img{
+		max-width:100%;
+		height:auto;
+	}
+
+	.mainbar2{
+		column-count: 1;
+		column-width:3px;
+	}
+	.gcpting{
+		column-count:2;
+		column-width:3px;
+		justify-content:center;
+		display:block;
+		background-color:#5999ff;
+		flex:auto;
+	}
+	.praktisk{
+		column-count: 2;
+		column-width: 3px;
+		justify-content: center;
+		display:block;
+		background-color:#5999ff;
+		flex:auto;
+	}
+
+
+	/* ALT ANDET */
+	.title{
+		display:block;
+		text-align: center;
+		font-size: 30px;
+		font-family: Comic Sans MS;
+		
+	}
+	.spil {
+		display:block;
+
+	}
+
+	.spil button{
+		position:relative;
+		right:8px;
+		display:inherit;
+		border:none;
+		cursor:pointer;
+	}
+
+	.start{
+		background-color:white;
+		outline:none;
+		border: none;
+		color: black;
+		padding: 20px 20px;
+		text-align: center;
+		text-decoration: inline-block;
+		font-size: 20px;
+		margin: 2px 2px;
+		cursor: pointer;
+	}
+	.canvasstyle{
+		position:relative;
+		display:block;
+	}
+	.ais{
+		position:relative;
+		display:inline-block;
+	}
+	.ais button{
+		position:inherit;
+		display:inherit;
+		cursor:pointer;
+	}

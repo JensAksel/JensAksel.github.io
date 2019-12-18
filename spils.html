@@ -1,0 +1,266 @@
+<html>
+<link rel='stylesheet' href='xac.css'>
+
+<body class='body'>
+
+	<div class='tab'>
+		<a href='index.html' style='background-color:none, text-decoration:none;'>GCP!</a>
+		<a href='spils.html' style='background-color:none, text-decoration:none;'>Spil</a>	
+	</div>
+
+	<div class='spil'>
+		<a href='pong.html'> <img src='PINGOPG.jpg'> </a>
+	</div>
+
+	
+	
+	
+	<script type="text/javascript">
+
+	
+			//PONG
+			document.getElementById('canvas').style.display='none';
+
+			function ubermensch(){
+				um=true;
+
+				xneg=(y+((x+405)/Math.abs(xspeed))*yspeed);
+				xpos=(y+((455-x)/xspeed)*yspeed);
+
+				if (xspeed<0){
+					if(xneg<0){
+						nyy=500-(Math.abs((Math.floor(xneg/500))%2*500-(xneg%500)))		
+					}
+					else if(xneg>500){
+						nyy=Math.abs(((Math.floor(xneg/500))%2)*500-(xneg%500))
+					}
+					else if(0<xneg<500){
+						nyy=xneg
+					}
+				}
+
+				if (xspeed>0){
+					if(xpos<0){
+						nyy=Math.abs(xpos)
+					}
+					else if(xpos>500){
+						nyy=1000-(xpos)
+					}
+					else if(0<xpos<500){
+						nyy=xpos
+					}
+				}
+
+				if (p2+37<Math.round(nyy)&& Math.round(nyy)<(p2+43)){
+					p2speed=0
+				}
+				else if (Math.round(nyy)<(p2+37)){
+					p2speed=-5
+				}
+				else if (Math.round(nyy)>(p2+43)){
+					p2speed=5
+				}
+
+			}
+			function lessubermensch(){
+				lum=true;
+				if(p1+37<y && y<(p1+43)){
+					p1speed=0
+				}
+				else if(y<p1+37){
+					p1speed=-5
+				}
+				else if(y>(p1+43)){
+					p1speed=5
+				}
+			}
+
+			
+				p2speed=0;
+				p1speed=0;
+				um=false;
+				lum=false;
+				game=false;
+				yeet=true;
+				
+				p1p=0;
+				p2p=0;
+
+				x=250;
+				y=250;
+				p1=210;
+				p2=210;
+
+				document.getElementById('canvas').style.display='block';
+
+ 				xspeed=1.66+Math.random()/3.0;
+				yspeed=4-(xspeed**2);	
+			
+
+
+			window.addEventListener('keydown',keydown,false);
+			function keydown(e){
+				if (!um){
+					if (e.which=='38'){
+						p2speed=-5
+						game=true
+					}
+					if (e.which=='40'){
+						p2speed=5
+						game=true
+					}
+				}
+				if (!lum){
+					if (e.which=='87'){
+						p1speed=-5
+						game=true
+					}
+					if (e.which=='83'){
+						p1speed=5
+						game=true
+					}
+				}
+				}
+			window.addEventListener('keyup',keyup,false);
+			function keyup(e){
+				if (e.which=='38'||e.which=='40'){
+					p2speed=0
+				}
+				if (e.which=='87'||e.which=='83'){
+					p1speed=0
+				}
+				}	
+
+			const canvas = document.getElementById('canvas');
+			const context = canvas.getContext('2d');
+
+			const bw=10;
+			const p1x=25;
+			const p2x=455;
+
+			canvas.style.display='none';
+
+			let xneg=0;
+			let xpos=0;
+
+			let x=250;
+			let y=250;
+			let nyy=210;
+
+			let xspeed=1.66+Math.random()/3.0;
+			let yspeed=(4-(xspeed**2));
+
+			let p1=210;
+			let p2=210;
+
+			let p1speed=0;
+			let p2speed=0;
+
+			let p1p=0;
+			let p2p=0;
+
+			let um=false;
+			let lum=false;
+			let game=false;
+			let yeet=true;
+
+			function pong(x,y){
+				context.clearRect(0,0,canvas.width,canvas.height);
+				context.font='20px Comic Sans MS';
+				context.fillText(p1p,165,45);
+				context.fillText(p2p,335,45);
+				context.beginPath();
+				context.arc(x,y,bw,0,2*Math.PI);
+				context.fillStyle='green';
+				context.lineWidth=0;
+				context.stroke();
+				context.fill();
+			}
+
+			function paddle(x,y){
+				context.beginPath();
+				context.rect(x,y,20,80);
+				context.fillStyle='black';
+				context.fill();
+			}
+
+			setInterval(function(){
+				if(game||yeet){
+					pong(x,y);
+					paddle(p1x,p1);
+					paddle(p2x,p2);
+					if (x+bw>p2x && y>p2 && y<p2+80){
+						x=445
+						xspeed*=-1.1
+						yspeed*=1.1
+						yspeed+=p2speed/5.0
+
+					}
+					if (x-bw<p1x+20 && y>p1 && y<p1+80){
+						x=55
+						xspeed*=-1.1
+						yspeed*=1.1
+						yspeed+=p1speed/5.0
+
+					}
+					if (p2+80<y<p2 && x+bw-1>p2x){
+						yspeed=0
+						y+=p2speed
+					}
+					if (p1+80<y<p1 && x-bw<p1x+19){
+						yspeed=0
+						y+=p1speed
+					}
+
+					if (x>500){
+						p1p+=1
+						xspeed=(1.66+Math.random()/3.0)*-1
+						yspeed=(4-xspeed**2)
+						x=250
+						y=250
+
+					}
+					if(x<0){
+						p2p+=1
+						xspeed=(1.66+Math.random()/3.0)
+						yspeed=(4-xspeed**2)
+						x=250
+						y=250
+					}
+
+					if (y>=canvas.height-bw||y<=0+bw) {
+						yspeed*=-1
+					}
+
+					if (p1>canvas.height){
+						p1=-80
+					}
+					if(p2>canvas.height){
+						p2=-80
+					}
+					if(p1<-80){
+						p1=canvas.height
+					}
+					if(p2<-80){
+						p2=canvas.height
+					}
+
+					if(um){
+						ubermensch();
+					}
+					if(lum){
+						lessubermensch();
+					}
+
+					p1+=p1speed;
+					p2+=p2speed;
+					
+					x+=xspeed;
+					y+=yspeed;
+					yeet=false;
+				}
+			},10);
+			
+	</script>
+</body>
+</html>

@@ -84,6 +84,7 @@
 	.mainbar{
 		flex-direction: column;
 		flex:auto;
+		max-width: calc(100% - 235px);
 		background-color:#5999ff;
 		padding:10px;
 	}
@@ -120,12 +121,19 @@
 		flex:auto;
 	}
 	.praktisk{
-		column-count: 2;
-		column-width: 3px;
-		justify-content: center;
-		display:block;
-		background-color:#5999ff;
+		display:flex;
+		flex-wrap: wrap;
+	}
+
+	.praktiskcols{
+		flex-direction: column;
 		flex:auto;
+		flex-grow: 1;
+		flex-basis: 0;
+		background-color:#5999ff;
+		padding:10px;
+		display:flex;
+
 	}
 
 
